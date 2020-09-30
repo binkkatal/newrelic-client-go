@@ -91,6 +91,30 @@ type CloudAwsAthenaIntegrationInput struct {
 	MetricsPollingInterval int `json:"metricsPollingInterval"`
 }
 
+// CloudAwsCognitoIntegrationInput - Cognito
+type CloudAwsCognitoIntegrationInput struct {
+	// Specify each AWS region that includes the resources that you want to monitor.
+	AwsRegions []string `json:"awsRegions"`
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudAwsConnectIntegrationInput - Connect
+type CloudAwsConnectIntegrationInput struct {
+	// Specify each AWS region that includes the resources that you want to monitor.
+	AwsRegions []string `json:"awsRegions"`
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
 // CloudAwsDirectconnectIntegrationInput - Direct Connect
 type CloudAwsDirectconnectIntegrationInput struct {
 	// Specify each AWS region that includes the resources that you want to monitor.
@@ -105,92 +129,126 @@ type CloudAwsDirectconnectIntegrationInput struct {
 
 // CloudAwsDisableIntegrationsInput - List of integrations
 type CloudAwsDisableIntegrationsInput struct {
-	// SES integration
-	Ses []CloudDisableAccountIntegrationInput `json:"ses"`
-	// EC2 integration
-	Ec2 []CloudDisableAccountIntegrationInput `json:"ec2"`
-	// Billing integration
-	Billing []CloudDisableAccountIntegrationInput `json:"billing"`
-	// EMR integration
-	Emr []CloudDisableAccountIntegrationInput `json:"emr"`
-	// DocumentDB integration
-	AwsDocdb []CloudDisableAccountIntegrationInput `json:"awsDocdb"`
-	// AutoScaling integration
-	Autoscaling []CloudDisableAccountIntegrationInput `json:"autoscaling"`
-	// Route 53 integration
-	Route53 []CloudDisableAccountIntegrationInput `json:"route53"`
-	// VPC integration
-	Vpc []CloudDisableAccountIntegrationInput `json:"vpc"`
-	// WAF integration
-	AwsWaf []CloudDisableAccountIntegrationInput `json:"awsWaf"`
-	// AppSync integration
-	AwsAppsync []CloudDisableAccountIntegrationInput `json:"awsAppsync"`
-	// Kinesis Streams integration
-	Kinesis []CloudDisableAccountIntegrationInput `json:"kinesis"`
-	// DynamoDB integration
-	Dynamodb []CloudDisableAccountIntegrationInput `json:"dynamodb"`
-	// Elastic Beanstalk integration
-	Elasticbeanstalk []CloudDisableAccountIntegrationInput `json:"elasticbeanstalk"`
-	// S3 integration
-	S3 []CloudDisableAccountIntegrationInput `json:"s3"`
-	// SQS integration
-	Sqs []CloudDisableAccountIntegrationInput `json:"sqs"`
-	// SNS integration
-	Sns []CloudDisableAccountIntegrationInput `json:"sns"`
+	// Elemental MediaConvert integration
+	AwsMediaconvert []CloudDisableAccountIntegrationInput `json:"awsMediaconvert"`
+	// CloudTrail integration
+	Cloudtrail []CloudDisableAccountIntegrationInput `json:"cloudtrail"`
 	// Elasticsearch Service integration
 	Elasticsearch []CloudDisableAccountIntegrationInput `json:"elasticsearch"`
-	// Health integration
-	Health []CloudDisableAccountIntegrationInput `json:"health"`
+	// X-Ray integration
+	AwsXray []CloudDisableAccountIntegrationInput `json:"awsXray"`
+	// AutoScaling integration
+	Autoscaling []CloudDisableAccountIntegrationInput `json:"autoscaling"`
+	// SNS integration
+	Sns []CloudDisableAccountIntegrationInput `json:"sns"`
 	// IoT integration
 	Iot []CloudDisableAccountIntegrationInput `json:"iot"`
-	// Kinesis Firehose integration
-	KinesisFirehose []CloudDisableAccountIntegrationInput `json:"kinesisFirehose"`
-	// ElastiCache integration
-	Elasticache []CloudDisableAccountIntegrationInput `json:"elasticache"`
-	// EFS integration
-	Efs []CloudDisableAccountIntegrationInput `json:"efs"`
+	// AppSync integration
+	AwsAppsync []CloudDisableAccountIntegrationInput `json:"awsAppsync"`
+	// Neptune integration
+	AwsNeptune []CloudDisableAccountIntegrationInput `json:"awsNeptune"`
+	// Billing integration
+	Billing []CloudDisableAccountIntegrationInput `json:"billing"`
+	// IAM integration
+	Iam []CloudDisableAccountIntegrationInput `json:"iam"`
 	// CloudFront integration
 	Cloudfront []CloudDisableAccountIntegrationInput `json:"cloudfront"`
-	// ECS integration
-	Ecs []CloudDisableAccountIntegrationInput `json:"ecs"`
-	// ELB integration
+	// SES integration
+	Ses []CloudDisableAccountIntegrationInput `json:"ses"`
+	// Route 53 integration
+	Route53 []CloudDisableAccountIntegrationInput `json:"route53"`
+	// Elastic Beanstalk integration
+	Elasticbeanstalk []CloudDisableAccountIntegrationInput `json:"elasticbeanstalk"`
+	// Kinesis Firehose integration
+	KinesisFirehose []CloudDisableAccountIntegrationInput `json:"kinesisFirehose"`
+	// DocumentDB integration
+	AwsDocdb []CloudDisableAccountIntegrationInput `json:"awsDocdb"`
+	// Connect integration
+	AwsConnect []CloudDisableAccountIntegrationInput `json:"awsConnect"`
+	// ELB (Classic) integration
+	Elb []CloudDisableAccountIntegrationInput `json:"elb"`
+	// WAFV2 integration
+	AwsWafv2 []CloudDisableAccountIntegrationInput `json:"awsWafv2"`
+	// Glue integration
+	AwsGlue []CloudDisableAccountIntegrationInput `json:"awsGlue"`
+	// EFS integration
+	Efs []CloudDisableAccountIntegrationInput `json:"efs"`
+	// MediaPackage VOD integration
+	AwsMediapackagevod []CloudDisableAccountIntegrationInput `json:"awsMediapackagevod"`
+	// EMR integration
+	Emr []CloudDisableAccountIntegrationInput `json:"emr"`
+	// Managed Kafka integration
+	AwsMsk []CloudDisableAccountIntegrationInput `json:"awsMsk"`
+	// QLDB integration
+	AwsQldb []CloudDisableAccountIntegrationInput `json:"awsQldb"`
+	// EC2 integration
+	Ec2 []CloudDisableAccountIntegrationInput `json:"ec2"`
+	// ALB/NLB integration
 	Alb []CloudDisableAccountIntegrationInput `json:"alb"`
+	// API Gateway integration
+	APIgateway []CloudDisableAccountIntegrationInput `json:"apigateway"`
+	// Health integration
+	Health []CloudDisableAccountIntegrationInput `json:"health"`
+	// Kinesis Streams integration
+	Kinesis []CloudDisableAccountIntegrationInput `json:"kinesis"`
+	// Trusted Advisor integration
+	Trustedadvisor []CloudDisableAccountIntegrationInput `json:"trustedadvisor"`
+	// SQS integration
+	Sqs []CloudDisableAccountIntegrationInput `json:"sqs"`
+	// RDS integration
+	Rds []CloudDisableAccountIntegrationInput `json:"rds"`
+	// S3 integration
+	S3 []CloudDisableAccountIntegrationInput `json:"s3"`
 	// Lambda integration
 	Lambda []CloudDisableAccountIntegrationInput `json:"lambda"`
 	// Athena integration
 	AwsAthena []CloudDisableAccountIntegrationInput `json:"awsAthena"`
-	// Step Functions integration
-	AwsStates []CloudDisableAccountIntegrationInput `json:"awsStates"`
-	// API Gateway integration
-	APIgateway []CloudDisableAccountIntegrationInput `json:"apigateway"`
-	// IAM integration
-	Iam []CloudDisableAccountIntegrationInput `json:"iam"`
-	// MQ integration
-	AwsMq []CloudDisableAccountIntegrationInput `json:"awsMq"`
-	// CloudTrail integration
-	Cloudtrail []CloudDisableAccountIntegrationInput `json:"cloudtrail"`
-	// Redshift integration
-	Redshift []CloudDisableAccountIntegrationInput `json:"redshift"`
-	// EBS integration
-	Ebs []CloudDisableAccountIntegrationInput `json:"ebs"`
-	// Managed Kafka integration
-	AwsMsk []CloudDisableAccountIntegrationInput `json:"awsMsk"`
+	// Route53 Resolver integration
+	AwsRoute53resolver []CloudDisableAccountIntegrationInput `json:"awsRoute53resolver"`
+	// DynamoDB integration
+	Dynamodb []CloudDisableAccountIntegrationInput `json:"dynamodb"`
 	// Direct Connect integration
 	AwsDirectconnect []CloudDisableAccountIntegrationInput `json:"awsDirectconnect"`
-	// QLDB integration
-	AwsQldb []CloudDisableAccountIntegrationInput `json:"awsQldb"`
-	// Glue integration
-	AwsGlue []CloudDisableAccountIntegrationInput `json:"awsGlue"`
-	// ELB (Classic) integration
-	Elb []CloudDisableAccountIntegrationInput `json:"elb"`
-	// RDS integration
-	Rds []CloudDisableAccountIntegrationInput `json:"rds"`
-	// Trusted Advisor integration
-	Trustedadvisor []CloudDisableAccountIntegrationInput `json:"trustedadvisor"`
+	// Kinesis Data Analytics integration
+	AwsKinesisanalytics []CloudDisableAccountIntegrationInput `json:"awsKinesisanalytics"`
+	// ECS integration
+	Ecs []CloudDisableAccountIntegrationInput `json:"ecs"`
+	// Transit Gateway integration
+	AwsTransitgateway []CloudDisableAccountIntegrationInput `json:"awsTransitgateway"`
+	// Redshift integration
+	Redshift []CloudDisableAccountIntegrationInput `json:"redshift"`
+	// FSx integration
+	AwsFsx []CloudDisableAccountIntegrationInput `json:"awsFsx"`
+	// EBS integration
+	Ebs []CloudDisableAccountIntegrationInput `json:"ebs"`
+	// VPC integration
+	Vpc []CloudDisableAccountIntegrationInput `json:"vpc"`
+	// ElastiCache integration
+	Elasticache []CloudDisableAccountIntegrationInput `json:"elasticache"`
+	// Step Functions integration
+	AwsStates []CloudDisableAccountIntegrationInput `json:"awsStates"`
+	// Cognito integration
+	AwsCognito []CloudDisableAccountIntegrationInput `json:"awsCognito"`
+	// MQ integration
+	AwsMq []CloudDisableAccountIntegrationInput `json:"awsMq"`
+	// WAF integration
+	AwsWaf []CloudDisableAccountIntegrationInput `json:"awsWaf"`
 }
 
 // CloudAwsDocdbIntegrationInput - DocumentDB
 type CloudAwsDocdbIntegrationInput struct {
+	// Specify each AWS region that includes the resources that you want to monitor.
+	AwsRegions []string `json:"awsRegions"`
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudAwsFsxIntegrationInput - FSx
+type CloudAwsFsxIntegrationInput struct {
 	// Specify each AWS region that includes the resources that you want to monitor.
 	AwsRegions []string `json:"awsRegions"`
 	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
@@ -239,12 +297,22 @@ func (x *CloudAwsGovCloudProvider) ImplementsCloudProvider() {}
 
 // CloudAwsGovcloudDisableIntegrationsInput - List of integrations
 type CloudAwsGovcloudDisableIntegrationsInput struct {
-	// ELB integration
+	// ALB/NLB integration
 	Alb []CloudDisableAccountIntegrationInput `json:"alb"`
 	// API Gateway integration
 	APIgateway []CloudDisableAccountIntegrationInput `json:"apigateway"`
+	// AutoScaling integration
+	Autoscaling []CloudDisableAccountIntegrationInput `json:"autoscaling"`
+	// Direct Connect integration
+	AwsDirectconnect []CloudDisableAccountIntegrationInput `json:"awsDirectconnect"`
+	// Step Functions integration
+	AwsStates []CloudDisableAccountIntegrationInput `json:"awsStates"`
+	// CloudTrail integration
+	Cloudtrail []CloudDisableAccountIntegrationInput `json:"cloudtrail"`
 	// DynamoDB integration
 	Dynamodb []CloudDisableAccountIntegrationInput `json:"dynamodb"`
+	// EBS integration
+	Ebs []CloudDisableAccountIntegrationInput `json:"ebs"`
 	// EC2 integration
 	Ec2 []CloudDisableAccountIntegrationInput `json:"ec2"`
 	// Elasticsearch Service integration
@@ -253,24 +321,42 @@ type CloudAwsGovcloudDisableIntegrationsInput struct {
 	Elb []CloudDisableAccountIntegrationInput `json:"elb"`
 	// EMR integration
 	Emr []CloudDisableAccountIntegrationInput `json:"emr"`
+	// IAM integration
+	Iam []CloudDisableAccountIntegrationInput `json:"iam"`
 	// Lambda integration
 	Lambda []CloudDisableAccountIntegrationInput `json:"lambda"`
 	// RDS integration
 	Rds []CloudDisableAccountIntegrationInput `json:"rds"`
+	// Redshift integration
+	Redshift []CloudDisableAccountIntegrationInput `json:"redshift"`
+	// Route 53 integration
+	Route53 []CloudDisableAccountIntegrationInput `json:"route53"`
 	// S3 integration
 	S3 []CloudDisableAccountIntegrationInput `json:"s3"`
+	// SNS integration
+	Sns []CloudDisableAccountIntegrationInput `json:"sns"`
 	// SQS integration
 	Sqs []CloudDisableAccountIntegrationInput `json:"sqs"`
 }
 
 // CloudAwsGovcloudIntegrationsInput - List of integrations
 type CloudAwsGovcloudIntegrationsInput struct {
-	// ELB integration
+	// ALB/NLB integration
 	Alb []CloudAlbIntegrationInput `json:"alb"`
 	// API Gateway integration
 	APIgateway []CloudAPIgatewayIntegrationInput `json:"apigateway"`
+	// AutoScaling integration
+	Autoscaling []CloudAutoscalingIntegrationInput `json:"autoscaling"`
+	// Direct Connect integration
+	AwsDirectconnect []CloudAwsDirectconnectIntegrationInput `json:"awsDirectconnect"`
+	// Step Functions integration
+	AwsStates []CloudAwsStatesIntegrationInput `json:"awsStates"`
+	// CloudTrail integration
+	Cloudtrail []CloudCloudtrailIntegrationInput `json:"cloudtrail"`
 	// DynamoDB integration
 	Dynamodb []CloudDynamodbIntegrationInput `json:"dynamodb"`
+	// EBS integration
+	Ebs []CloudEbsIntegrationInput `json:"ebs"`
 	// EC2 integration
 	Ec2 []CloudEc2IntegrationInput `json:"ec2"`
 	// Elasticsearch Service integration
@@ -279,12 +365,20 @@ type CloudAwsGovcloudIntegrationsInput struct {
 	Elb []CloudElbIntegrationInput `json:"elb"`
 	// EMR integration
 	Emr []CloudEmrIntegrationInput `json:"emr"`
+	// IAM integration
+	Iam []CloudIamIntegrationInput `json:"iam"`
 	// Lambda integration
 	Lambda []CloudLambdaIntegrationInput `json:"lambda"`
 	// RDS integration
 	Rds []CloudRdsIntegrationInput `json:"rds"`
+	// Redshift integration
+	Redshift []CloudRedshiftIntegrationInput `json:"redshift"`
+	// Route 53 integration
+	Route53 []CloudRoute53IntegrationInput `json:"route53"`
 	// S3 integration
 	S3 []CloudS3IntegrationInput `json:"s3"`
+	// SNS integration
+	Sns []CloudSnsIntegrationInput `json:"sns"`
 	// SQS integration
 	Sqs []CloudSqsIntegrationInput `json:"sqs"`
 }
@@ -298,93 +392,127 @@ type CloudAwsGovcloudLinkAccountInput struct {
 	// The linked account name.
 	Name string `json:"name"`
 	// The secret key used to make requests to AWS service APIs
-	SecretAccessKey string `json:"secretAccessKey"`
+	SecretAccessKey SecureValue `json:"secretAccessKey"`
 }
 
 // CloudAwsIntegrationsInput - List of integrations
 type CloudAwsIntegrationsInput struct {
-	// SES integration
-	Ses []CloudSesIntegrationInput `json:"ses"`
-	// EC2 integration
-	Ec2 []CloudEc2IntegrationInput `json:"ec2"`
-	// Billing integration
-	Billing []CloudBillingIntegrationInput `json:"billing"`
-	// EMR integration
-	Emr []CloudEmrIntegrationInput `json:"emr"`
-	// DocumentDB integration
-	AwsDocdb []CloudAwsDocdbIntegrationInput `json:"awsDocdb"`
-	// AutoScaling integration
-	Autoscaling []CloudAutoscalingIntegrationInput `json:"autoscaling"`
-	// Route 53 integration
-	Route53 []CloudRoute53IntegrationInput `json:"route53"`
-	// VPC integration
-	Vpc []CloudVpcIntegrationInput `json:"vpc"`
-	// WAF integration
-	AwsWaf []CloudAwsWafIntegrationInput `json:"awsWaf"`
-	// AppSync integration
-	AwsAppsync []CloudAwsAppsyncIntegrationInput `json:"awsAppsync"`
-	// Kinesis Streams integration
-	Kinesis []CloudKinesisIntegrationInput `json:"kinesis"`
-	// DynamoDB integration
-	Dynamodb []CloudDynamodbIntegrationInput `json:"dynamodb"`
-	// Elastic Beanstalk integration
-	Elasticbeanstalk []CloudElasticbeanstalkIntegrationInput `json:"elasticbeanstalk"`
-	// S3 integration
-	S3 []CloudS3IntegrationInput `json:"s3"`
-	// SQS integration
-	Sqs []CloudSqsIntegrationInput `json:"sqs"`
-	// SNS integration
-	Sns []CloudSnsIntegrationInput `json:"sns"`
+	// Elemental MediaConvert integration
+	AwsMediaconvert []CloudAwsMediaconvertIntegrationInput `json:"awsMediaconvert"`
+	// CloudTrail integration
+	Cloudtrail []CloudCloudtrailIntegrationInput `json:"cloudtrail"`
 	// Elasticsearch Service integration
 	Elasticsearch []CloudElasticsearchIntegrationInput `json:"elasticsearch"`
-	// Health integration
-	Health []CloudHealthIntegrationInput `json:"health"`
+	// X-Ray integration
+	AwsXray []CloudAwsXrayIntegrationInput `json:"awsXray"`
+	// AutoScaling integration
+	Autoscaling []CloudAutoscalingIntegrationInput `json:"autoscaling"`
+	// SNS integration
+	Sns []CloudSnsIntegrationInput `json:"sns"`
 	// IoT integration
 	Iot []CloudIotIntegrationInput `json:"iot"`
-	// Kinesis Firehose integration
-	KinesisFirehose []CloudKinesisFirehoseIntegrationInput `json:"kinesisFirehose"`
-	// ElastiCache integration
-	Elasticache []CloudElasticacheIntegrationInput `json:"elasticache"`
-	// EFS integration
-	Efs []CloudEfsIntegrationInput `json:"efs"`
+	// AppSync integration
+	AwsAppsync []CloudAwsAppsyncIntegrationInput `json:"awsAppsync"`
+	// Neptune integration
+	AwsNeptune []CloudAwsNeptuneIntegrationInput `json:"awsNeptune"`
+	// Billing integration
+	Billing []CloudBillingIntegrationInput `json:"billing"`
+	// IAM integration
+	Iam []CloudIamIntegrationInput `json:"iam"`
 	// CloudFront integration
 	Cloudfront []CloudCloudfrontIntegrationInput `json:"cloudfront"`
-	// ECS integration
-	Ecs []CloudEcsIntegrationInput `json:"ecs"`
-	// ELB integration
+	// SES integration
+	Ses []CloudSesIntegrationInput `json:"ses"`
+	// Route 53 integration
+	Route53 []CloudRoute53IntegrationInput `json:"route53"`
+	// Elastic Beanstalk integration
+	Elasticbeanstalk []CloudElasticbeanstalkIntegrationInput `json:"elasticbeanstalk"`
+	// Kinesis Firehose integration
+	KinesisFirehose []CloudKinesisFirehoseIntegrationInput `json:"kinesisFirehose"`
+	// DocumentDB integration
+	AwsDocdb []CloudAwsDocdbIntegrationInput `json:"awsDocdb"`
+	// Connect integration
+	AwsConnect []CloudAwsConnectIntegrationInput `json:"awsConnect"`
+	// ELB (Classic) integration
+	Elb []CloudElbIntegrationInput `json:"elb"`
+	// WAFV2 integration
+	AwsWafv2 []CloudAwsWafv2IntegrationInput `json:"awsWafv2"`
+	// Glue integration
+	AwsGlue []CloudAwsGlueIntegrationInput `json:"awsGlue"`
+	// EFS integration
+	Efs []CloudEfsIntegrationInput `json:"efs"`
+	// MediaPackage VOD integration
+	AwsMediapackagevod []CloudAwsMediapackagevodIntegrationInput `json:"awsMediapackagevod"`
+	// EMR integration
+	Emr []CloudEmrIntegrationInput `json:"emr"`
+	// Managed Kafka integration
+	AwsMsk []CloudAwsMskIntegrationInput `json:"awsMsk"`
+	// QLDB integration
+	AwsQldb []CloudAwsQldbIntegrationInput `json:"awsQldb"`
+	// EC2 integration
+	Ec2 []CloudEc2IntegrationInput `json:"ec2"`
+	// ALB/NLB integration
 	Alb []CloudAlbIntegrationInput `json:"alb"`
+	// API Gateway integration
+	APIgateway []CloudAPIgatewayIntegrationInput `json:"apigateway"`
+	// Health integration
+	Health []CloudHealthIntegrationInput `json:"health"`
+	// Kinesis Streams integration
+	Kinesis []CloudKinesisIntegrationInput `json:"kinesis"`
+	// Trusted Advisor integration
+	Trustedadvisor []CloudTrustedadvisorIntegrationInput `json:"trustedadvisor"`
+	// SQS integration
+	Sqs []CloudSqsIntegrationInput `json:"sqs"`
+	// RDS integration
+	Rds []CloudRdsIntegrationInput `json:"rds"`
+	// S3 integration
+	S3 []CloudS3IntegrationInput `json:"s3"`
 	// Lambda integration
 	Lambda []CloudLambdaIntegrationInput `json:"lambda"`
 	// Athena integration
 	AwsAthena []CloudAwsAthenaIntegrationInput `json:"awsAthena"`
-	// Step Functions integration
-	AwsStates []CloudAwsStatesIntegrationInput `json:"awsStates"`
-	// API Gateway integration
-	APIgateway []CloudAPIgatewayIntegrationInput `json:"apigateway"`
-	// IAM integration
-	Iam []CloudIamIntegrationInput `json:"iam"`
-	// MQ integration
-	AwsMq []CloudAwsMqIntegrationInput `json:"awsMq"`
-	// CloudTrail integration
-	Cloudtrail []CloudCloudtrailIntegrationInput `json:"cloudtrail"`
-	// Redshift integration
-	Redshift []CloudRedshiftIntegrationInput `json:"redshift"`
-	// EBS integration
-	Ebs []CloudEbsIntegrationInput `json:"ebs"`
-	// Managed Kafka integration
-	AwsMsk []CloudAwsMskIntegrationInput `json:"awsMsk"`
+	// Route53 Resolver integration
+	AwsRoute53resolver []CloudAwsRoute53resolverIntegrationInput `json:"awsRoute53resolver"`
+	// DynamoDB integration
+	Dynamodb []CloudDynamodbIntegrationInput `json:"dynamodb"`
 	// Direct Connect integration
 	AwsDirectconnect []CloudAwsDirectconnectIntegrationInput `json:"awsDirectconnect"`
-	// QLDB integration
-	AwsQldb []CloudAwsQldbIntegrationInput `json:"awsQldb"`
-	// Glue integration
-	AwsGlue []CloudAwsGlueIntegrationInput `json:"awsGlue"`
-	// ELB (Classic) integration
-	Elb []CloudElbIntegrationInput `json:"elb"`
-	// RDS integration
-	Rds []CloudRdsIntegrationInput `json:"rds"`
-	// Trusted Advisor integration
-	Trustedadvisor []CloudTrustedadvisorIntegrationInput `json:"trustedadvisor"`
+	// Kinesis Data Analytics integration
+	AwsKinesisanalytics []CloudAwsKinesisanalyticsIntegrationInput `json:"awsKinesisanalytics"`
+	// ECS integration
+	Ecs []CloudEcsIntegrationInput `json:"ecs"`
+	// Transit Gateway integration
+	AwsTransitgateway []CloudAwsTransitgatewayIntegrationInput `json:"awsTransitgateway"`
+	// Redshift integration
+	Redshift []CloudRedshiftIntegrationInput `json:"redshift"`
+	// FSx integration
+	AwsFsx []CloudAwsFsxIntegrationInput `json:"awsFsx"`
+	// EBS integration
+	Ebs []CloudEbsIntegrationInput `json:"ebs"`
+	// VPC integration
+	Vpc []CloudVpcIntegrationInput `json:"vpc"`
+	// ElastiCache integration
+	Elasticache []CloudElasticacheIntegrationInput `json:"elasticache"`
+	// Step Functions integration
+	AwsStates []CloudAwsStatesIntegrationInput `json:"awsStates"`
+	// Cognito integration
+	AwsCognito []CloudAwsCognitoIntegrationInput `json:"awsCognito"`
+	// MQ integration
+	AwsMq []CloudAwsMqIntegrationInput `json:"awsMq"`
+	// WAF integration
+	AwsWaf []CloudAwsWafIntegrationInput `json:"awsWaf"`
+}
+
+// CloudAwsKinesisanalyticsIntegrationInput - Kinesis Data Analytics
+type CloudAwsKinesisanalyticsIntegrationInput struct {
+	// Specify each AWS region that includes the resources that you want to monitor.
+	AwsRegions []string `json:"awsRegions"`
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
 }
 
 // CloudAwsLinkAccountInput - Information required to link a AWS account to a NewRelic account.
@@ -393,6 +521,30 @@ type CloudAwsLinkAccountInput struct {
 	Arn string `json:"arn"`
 	// The linked account name.
 	Name string `json:"name"`
+}
+
+// CloudAwsMediaconvertIntegrationInput - Elemental MediaConvert
+type CloudAwsMediaconvertIntegrationInput struct {
+	// Specify each AWS region that includes the resources that you want to monitor.
+	AwsRegions []string `json:"awsRegions"`
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudAwsMediapackagevodIntegrationInput - MediaPackage VOD
+type CloudAwsMediapackagevodIntegrationInput struct {
+	// Specify each AWS region that includes the resources that you want to monitor.
+	AwsRegions []string `json:"awsRegions"`
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
 }
 
 // CloudAwsMqIntegrationInput - MQ
@@ -409,6 +561,18 @@ type CloudAwsMqIntegrationInput struct {
 
 // CloudAwsMskIntegrationInput - Managed Kafka
 type CloudAwsMskIntegrationInput struct {
+	// Specify each AWS region that includes the resources that you want to monitor.
+	AwsRegions []string `json:"awsRegions"`
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudAwsNeptuneIntegrationInput - Neptune
+type CloudAwsNeptuneIntegrationInput struct {
 	// Specify each AWS region that includes the resources that you want to monitor.
 	AwsRegions []string `json:"awsRegions"`
 	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
@@ -457,8 +621,32 @@ type CloudAwsQldbIntegrationInput struct {
 	MetricsPollingInterval int `json:"metricsPollingInterval"`
 }
 
+// CloudAwsRoute53resolverIntegrationInput - Route53 Resolver
+type CloudAwsRoute53resolverIntegrationInput struct {
+	// Specify each AWS region that includes the resources that you want to monitor.
+	AwsRegions []string `json:"awsRegions"`
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
 // CloudAwsStatesIntegrationInput - Step Functions
 type CloudAwsStatesIntegrationInput struct {
+	// Specify each AWS region that includes the resources that you want to monitor.
+	AwsRegions []string `json:"awsRegions"`
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudAwsTransitgatewayIntegrationInput - Transit Gateway
+type CloudAwsTransitgatewayIntegrationInput struct {
 	// Specify each AWS region that includes the resources that you want to monitor.
 	AwsRegions []string `json:"awsRegions"`
 	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
@@ -481,6 +669,30 @@ type CloudAwsWafIntegrationInput struct {
 	MetricsPollingInterval int `json:"metricsPollingInterval"`
 }
 
+// CloudAwsWafv2IntegrationInput - WAFV2
+type CloudAwsWafv2IntegrationInput struct {
+	// Specify each AWS region that includes the resources that you want to monitor.
+	AwsRegions []string `json:"awsRegions"`
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudAwsXrayIntegrationInput - X-Ray
+type CloudAwsXrayIntegrationInput struct {
+	// Specify each AWS region that includes the resources that you want to monitor.
+	AwsRegions []string `json:"awsRegions"`
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
 // CloudAzureAPImanagementIntegrationInput - Api Management
 type CloudAzureAPImanagementIntegrationInput struct {
 	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
@@ -493,8 +705,32 @@ type CloudAzureAPImanagementIntegrationInput struct {
 	ResourceGroups []string `json:"resourceGroups"`
 }
 
+// CloudAzureAppgatewayIntegrationInput - App Gateway
+type CloudAzureAppgatewayIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
+}
+
 // CloudAzureAppserviceIntegrationInput - Azure App Service
 type CloudAzureAppserviceIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
+}
+
+// CloudAzureContainersIntegrationInput - Containers
+type CloudAzureContainersIntegrationInput struct {
 	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
 	InventoryPollingInterval int `json:"inventoryPollingInterval"`
 	// The linked account identifier.
@@ -529,30 +765,66 @@ type CloudAzureCostmanagementIntegrationInput struct {
 	TagKeys []string `json:"tagKeys"`
 }
 
+// CloudAzureDatafactoryIntegrationInput - Data Factory
+type CloudAzureDatafactoryIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
+}
+
 // CloudAzureDisableIntegrationsInput - List of integrations
 type CloudAzureDisableIntegrationsInput struct {
 	// Api Management integration
 	AzureAPImanagement []CloudDisableAccountIntegrationInput `json:"azureApimanagement"`
+	// App Gateway integration
+	AzureAppgateway []CloudDisableAccountIntegrationInput `json:"azureAppgateway"`
 	// App Service integration
 	AzureAppservice []CloudDisableAccountIntegrationInput `json:"azureAppservice"`
+	// Containers integration
+	AzureContainers []CloudDisableAccountIntegrationInput `json:"azureContainers"`
 	// Cosmos DB integration
 	AzureCosmosdb []CloudDisableAccountIntegrationInput `json:"azureCosmosdb"`
 	// Cost Management integration
 	AzureCostmanagement []CloudDisableAccountIntegrationInput `json:"azureCostmanagement"`
+	// Data Factory integration
+	AzureDatafactory []CloudDisableAccountIntegrationInput `json:"azureDatafactory"`
+	// Event Hub integration
+	AzureEventhub []CloudDisableAccountIntegrationInput `json:"azureEventhub"`
+	// Express Route integration
+	AzureExpressroute []CloudDisableAccountIntegrationInput `json:"azureExpressroute"`
+	// Firewalls integration
+	AzureFirewalls []CloudDisableAccountIntegrationInput `json:"azureFirewalls"`
+	// Front Door integration
+	AzureFrontdoor []CloudDisableAccountIntegrationInput `json:"azureFrontdoor"`
 	// Functions integration
 	AzureFunctions []CloudDisableAccountIntegrationInput `json:"azureFunctions"`
+	// Key Vault integration
+	AzureKeyvault []CloudDisableAccountIntegrationInput `json:"azureKeyvault"`
 	// Load Balancer integration
 	AzureLoadbalancer []CloudDisableAccountIntegrationInput `json:"azureLoadbalancer"`
+	// Logic Apps integration
+	AzureLogicapps []CloudDisableAccountIntegrationInput `json:"azureLogicapps"`
+	// Machine Learning integration
+	AzureMachinelearning []CloudDisableAccountIntegrationInput `json:"azureMachinelearning"`
 	// Database for MariaDB integration
 	AzureMariadb []CloudDisableAccountIntegrationInput `json:"azureMariadb"`
 	// Database for MySQL integration
 	AzureMysql []CloudDisableAccountIntegrationInput `json:"azureMysql"`
 	// Database for PostgreSQL integration
 	AzurePostgresql []CloudDisableAccountIntegrationInput `json:"azurePostgresql"`
+	// Power BI Dedicated integration
+	AzurePowerbidedicated []CloudDisableAccountIntegrationInput `json:"azurePowerbidedicated"`
 	// Redis Cache integration
 	AzureRediscache []CloudDisableAccountIntegrationInput `json:"azureRediscache"`
 	// Service Bus integration
 	AzureServicebus []CloudDisableAccountIntegrationInput `json:"azureServicebus"`
+	// Service Fabric integration
+	AzureServicefabric []CloudDisableAccountIntegrationInput `json:"azureServicefabric"`
 	// SQL Database integration
 	AzureSql []CloudDisableAccountIntegrationInput `json:"azureSql"`
 	// SQL Managed Instances integration
@@ -565,6 +837,56 @@ type CloudAzureDisableIntegrationsInput struct {
 	AzureVirtualnetworks []CloudDisableAccountIntegrationInput `json:"azureVirtualnetworks"`
 	// Virtual Machines integration
 	AzureVms []CloudDisableAccountIntegrationInput `json:"azureVms"`
+	// VPN Gateways integration
+	AzureVpngateways []CloudDisableAccountIntegrationInput `json:"azureVpngateways"`
+}
+
+// CloudAzureEventhubIntegrationInput - Event Hub
+type CloudAzureEventhubIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
+}
+
+// CloudAzureExpressrouteIntegrationInput - Express Route
+type CloudAzureExpressrouteIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
+}
+
+// CloudAzureFirewallsIntegrationInput - Firewalls
+type CloudAzureFirewallsIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
+}
+
+// CloudAzureFrontdoorIntegrationInput - Front Door
+type CloudAzureFrontdoorIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
 }
 
 // CloudAzureFunctionsIntegrationInput - Azure Functions
@@ -583,26 +905,50 @@ type CloudAzureFunctionsIntegrationInput struct {
 type CloudAzureIntegrationsInput struct {
 	// Api Management integration
 	AzureAPImanagement []CloudAzureAPImanagementIntegrationInput `json:"azureApimanagement"`
+	// App Gateway integration
+	AzureAppgateway []CloudAzureAppgatewayIntegrationInput `json:"azureAppgateway"`
 	// App Service integration
 	AzureAppservice []CloudAzureAppserviceIntegrationInput `json:"azureAppservice"`
+	// Containers integration
+	AzureContainers []CloudAzureContainersIntegrationInput `json:"azureContainers"`
 	// Cosmos DB integration
 	AzureCosmosdb []CloudAzureCosmosdbIntegrationInput `json:"azureCosmosdb"`
 	// Cost Management integration
 	AzureCostmanagement []CloudAzureCostmanagementIntegrationInput `json:"azureCostmanagement"`
+	// Data Factory integration
+	AzureDatafactory []CloudAzureDatafactoryIntegrationInput `json:"azureDatafactory"`
+	// Event Hub integration
+	AzureEventhub []CloudAzureEventhubIntegrationInput `json:"azureEventhub"`
+	// Express Route integration
+	AzureExpressroute []CloudAzureExpressrouteIntegrationInput `json:"azureExpressroute"`
+	// Firewalls integration
+	AzureFirewalls []CloudAzureFirewallsIntegrationInput `json:"azureFirewalls"`
+	// Front Door integration
+	AzureFrontdoor []CloudAzureFrontdoorIntegrationInput `json:"azureFrontdoor"`
 	// Functions integration
 	AzureFunctions []CloudAzureFunctionsIntegrationInput `json:"azureFunctions"`
+	// Key Vault integration
+	AzureKeyvault []CloudAzureKeyvaultIntegrationInput `json:"azureKeyvault"`
 	// Load Balancer integration
 	AzureLoadbalancer []CloudAzureLoadbalancerIntegrationInput `json:"azureLoadbalancer"`
+	// Logic Apps integration
+	AzureLogicapps []CloudAzureLogicappsIntegrationInput `json:"azureLogicapps"`
+	// Machine Learning integration
+	AzureMachinelearning []CloudAzureMachinelearningIntegrationInput `json:"azureMachinelearning"`
 	// Database for MariaDB integration
 	AzureMariadb []CloudAzureMariadbIntegrationInput `json:"azureMariadb"`
 	// Database for MySQL integration
 	AzureMysql []CloudAzureMysqlIntegrationInput `json:"azureMysql"`
 	// Database for PostgreSQL integration
 	AzurePostgresql []CloudAzurePostgresqlIntegrationInput `json:"azurePostgresql"`
+	// Power BI Dedicated integration
+	AzurePowerbidedicated []CloudAzurePowerbidedicatedIntegrationInput `json:"azurePowerbidedicated"`
 	// Redis Cache integration
 	AzureRediscache []CloudAzureRediscacheIntegrationInput `json:"azureRediscache"`
 	// Service Bus integration
 	AzureServicebus []CloudAzureServicebusIntegrationInput `json:"azureServicebus"`
+	// Service Fabric integration
+	AzureServicefabric []CloudAzureServicefabricIntegrationInput `json:"azureServicefabric"`
 	// SQL Database integration
 	AzureSql []CloudAzureSqlIntegrationInput `json:"azureSql"`
 	// SQL Managed Instances integration
@@ -615,6 +961,20 @@ type CloudAzureIntegrationsInput struct {
 	AzureVirtualnetworks []CloudAzureVirtualnetworksIntegrationInput `json:"azureVirtualnetworks"`
 	// Virtual Machines integration
 	AzureVms []CloudAzureVmsIntegrationInput `json:"azureVms"`
+	// VPN Gateways integration
+	AzureVpngateways []CloudAzureVpngatewaysIntegrationInput `json:"azureVpngateways"`
+}
+
+// CloudAzureKeyvaultIntegrationInput - Key Vault
+type CloudAzureKeyvaultIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
 }
 
 // CloudAzureLinkAccountInput - Information required to link a Azure account to a NewRelic account.
@@ -622,7 +982,7 @@ type CloudAzureLinkAccountInput struct {
 	// The Azure account application identifier (used to fetch data).
 	ApplicationId string `json:"applicationId"`
 	// The Azure account application secret key.
-	ClientSecret string `json:"clientSecret"`
+	ClientSecret SecureValue `json:"clientSecret"`
 	// The linked account name.
 	Name string `json:"name"`
 	// The Azure account subscription identifier.
@@ -633,6 +993,30 @@ type CloudAzureLinkAccountInput struct {
 
 // CloudAzureLoadbalancerIntegrationInput - Azure Load Balancer
 type CloudAzureLoadbalancerIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
+}
+
+// CloudAzureLogicappsIntegrationInput - Logic Apps
+type CloudAzureLogicappsIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
+}
+
+// CloudAzureMachinelearningIntegrationInput - Machine Learning
+type CloudAzureMachinelearningIntegrationInput struct {
 	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
 	InventoryPollingInterval int `json:"inventoryPollingInterval"`
 	// The linked account identifier.
@@ -679,6 +1063,18 @@ type CloudAzurePostgresqlIntegrationInput struct {
 	ResourceGroups []string `json:"resourceGroups"`
 }
 
+// CloudAzurePowerbidedicatedIntegrationInput - Power BI Dedicated
+type CloudAzurePowerbidedicatedIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
+}
+
 // CloudAzureRediscacheIntegrationInput - Azure Redis Cache
 type CloudAzureRediscacheIntegrationInput struct {
 	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
@@ -693,6 +1089,18 @@ type CloudAzureRediscacheIntegrationInput struct {
 
 // CloudAzureServicebusIntegrationInput - Azure Service Bus
 type CloudAzureServicebusIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
+}
+
+// CloudAzureServicefabricIntegrationInput - Service Fabric
+type CloudAzureServicefabricIntegrationInput struct {
 	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
 	InventoryPollingInterval int `json:"inventoryPollingInterval"`
 	// The linked account identifier.
@@ -765,6 +1173,18 @@ type CloudAzureVirtualnetworksIntegrationInput struct {
 
 // CloudAzureVmsIntegrationInput - Azure Virtual Machines
 type CloudAzureVmsIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive.
+	ResourceGroups []string `json:"resourceGroups"`
+}
+
+// CloudAzureVpngatewaysIntegrationInput - VPN Gateways
+type CloudAzureVpngatewaysIntegrationInput struct {
 	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
 	InventoryPollingInterval int `json:"inventoryPollingInterval"`
 	// The linked account identifier.
@@ -1075,20 +1495,70 @@ type CloudGcpBigqueryIntegrationInput struct {
 	MetricsPollingInterval int `json:"metricsPollingInterval"`
 }
 
+// CloudGcpDataflowIntegrationInput - Dataflow
+type CloudGcpDataflowIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudGcpDataprocIntegrationInput - Dataproc
+type CloudGcpDataprocIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudGcpDatastoreIntegrationInput - Datastore
+type CloudGcpDatastoreIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
 // CloudGcpDisableIntegrationsInput - List of integrations
 type CloudGcpDisableIntegrationsInput struct {
 	// App Engine integration
 	GcpAppengine []CloudDisableAccountIntegrationInput `json:"gcpAppengine"`
 	// BigQuery integration
 	GcpBigquery []CloudDisableAccountIntegrationInput `json:"gcpBigquery"`
+	// Dataflow integration
+	GcpDataflow []CloudDisableAccountIntegrationInput `json:"gcpDataflow"`
+	// Dataproc integration
+	GcpDataproc []CloudDisableAccountIntegrationInput `json:"gcpDataproc"`
+	// Datastore integration
+	GcpDatastore []CloudDisableAccountIntegrationInput `json:"gcpDatastore"`
+	// Firebase Database integration
+	GcpFirebasedatabase []CloudDisableAccountIntegrationInput `json:"gcpFirebasedatabase"`
+	// Firebase Hosting integration
+	GcpFirebasehosting []CloudDisableAccountIntegrationInput `json:"gcpFirebasehosting"`
+	// Firebase Storage integration
+	GcpFirebasestorage []CloudDisableAccountIntegrationInput `json:"gcpFirebasestorage"`
+	// Firestore integration
+	GcpFirestore []CloudDisableAccountIntegrationInput `json:"gcpFirestore"`
 	// Cloud Functions integration
 	GcpFunctions []CloudDisableAccountIntegrationInput `json:"gcpFunctions"`
+	// Interconnect integration
+	GcpInterconnect []CloudDisableAccountIntegrationInput `json:"gcpInterconnect"`
 	// Kubernetes Engine integration
 	GcpKubernetes []CloudDisableAccountIntegrationInput `json:"gcpKubernetes"`
 	// Cloud Load Balancing integration
 	GcpLoadbalancing []CloudDisableAccountIntegrationInput `json:"gcpLoadbalancing"`
 	// Cloud Pub/Sub integration
 	GcpPubsub []CloudDisableAccountIntegrationInput `json:"gcpPubsub"`
+	// Router integration
+	GcpRouter []CloudDisableAccountIntegrationInput `json:"gcpRouter"`
+	// Run integration
+	GcpRun []CloudDisableAccountIntegrationInput `json:"gcpRun"`
 	// Cloud Spanner integration
 	GcpSpanner []CloudDisableAccountIntegrationInput `json:"gcpSpanner"`
 	// Cloud SQL integration
@@ -1097,6 +1567,48 @@ type CloudGcpDisableIntegrationsInput struct {
 	GcpStorage []CloudDisableAccountIntegrationInput `json:"gcpStorage"`
 	// Compute Engine integration
 	GcpVms []CloudDisableAccountIntegrationInput `json:"gcpVms"`
+	// VPC Access integration
+	GcpVpcaccess []CloudDisableAccountIntegrationInput `json:"gcpVpcaccess"`
+}
+
+// CloudGcpFirebasedatabaseIntegrationInput - Firebase Database
+type CloudGcpFirebasedatabaseIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudGcpFirebasehostingIntegrationInput - Firebase Hosting
+type CloudGcpFirebasehostingIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudGcpFirebasestorageIntegrationInput - Firebase Storage
+type CloudGcpFirebasestorageIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudGcpFirestoreIntegrationInput - Firestore
+type CloudGcpFirestoreIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
 }
 
 // CloudGcpFunctionsIntegrationInput - Google Cloud Functions
@@ -1115,14 +1627,34 @@ type CloudGcpIntegrationsInput struct {
 	GcpAppengine []CloudGcpAppengineIntegrationInput `json:"gcpAppengine"`
 	// BigQuery integration
 	GcpBigquery []CloudGcpBigqueryIntegrationInput `json:"gcpBigquery"`
+	// Dataflow integration
+	GcpDataflow []CloudGcpDataflowIntegrationInput `json:"gcpDataflow"`
+	// Dataproc integration
+	GcpDataproc []CloudGcpDataprocIntegrationInput `json:"gcpDataproc"`
+	// Datastore integration
+	GcpDatastore []CloudGcpDatastoreIntegrationInput `json:"gcpDatastore"`
+	// Firebase Database integration
+	GcpFirebasedatabase []CloudGcpFirebasedatabaseIntegrationInput `json:"gcpFirebasedatabase"`
+	// Firebase Hosting integration
+	GcpFirebasehosting []CloudGcpFirebasehostingIntegrationInput `json:"gcpFirebasehosting"`
+	// Firebase Storage integration
+	GcpFirebasestorage []CloudGcpFirebasestorageIntegrationInput `json:"gcpFirebasestorage"`
+	// Firestore integration
+	GcpFirestore []CloudGcpFirestoreIntegrationInput `json:"gcpFirestore"`
 	// Cloud Functions integration
 	GcpFunctions []CloudGcpFunctionsIntegrationInput `json:"gcpFunctions"`
+	// Interconnect integration
+	GcpInterconnect []CloudGcpInterconnectIntegrationInput `json:"gcpInterconnect"`
 	// Kubernetes Engine integration
 	GcpKubernetes []CloudGcpKubernetesIntegrationInput `json:"gcpKubernetes"`
 	// Cloud Load Balancing integration
 	GcpLoadbalancing []CloudGcpLoadbalancingIntegrationInput `json:"gcpLoadbalancing"`
 	// Cloud Pub/Sub integration
 	GcpPubsub []CloudGcpPubsubIntegrationInput `json:"gcpPubsub"`
+	// Router integration
+	GcpRouter []CloudGcpRouterIntegrationInput `json:"gcpRouter"`
+	// Run integration
+	GcpRun []CloudGcpRunIntegrationInput `json:"gcpRun"`
 	// Cloud Spanner integration
 	GcpSpanner []CloudGcpSpannerIntegrationInput `json:"gcpSpanner"`
 	// Cloud SQL integration
@@ -1131,6 +1663,18 @@ type CloudGcpIntegrationsInput struct {
 	GcpStorage []CloudGcpStorageIntegrationInput `json:"gcpStorage"`
 	// Compute Engine integration
 	GcpVms []CloudGcpVmsIntegrationInput `json:"gcpVms"`
+	// VPC Access integration
+	GcpVpcaccess []CloudGcpVpcaccessIntegrationInput `json:"gcpVpcaccess"`
+}
+
+// CloudGcpInterconnectIntegrationInput - Interconnect
+type CloudGcpInterconnectIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
 }
 
 // CloudGcpKubernetesIntegrationInput - Google Kubernetes Engine
@@ -1197,6 +1741,26 @@ type CloudGcpPubsubIntegrationInput struct {
 	MetricsPollingInterval int `json:"metricsPollingInterval"`
 }
 
+// CloudGcpRouterIntegrationInput - Router
+type CloudGcpRouterIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudGcpRunIntegrationInput - Run
+type CloudGcpRunIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
 // CloudGcpSpannerIntegrationInput - Cloud Spanner
 type CloudGcpSpannerIntegrationInput struct {
 	// Specify if labels and the extended inventory should be collected. May affect total data collection time and contribute to the Cloud provider API rate limit.
@@ -1233,6 +1797,16 @@ type CloudGcpStorageIntegrationInput struct {
 
 // CloudGcpVmsIntegrationInput - Google Compute Engine
 type CloudGcpVmsIntegrationInput struct {
+	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
+	InventoryPollingInterval int `json:"inventoryPollingInterval"`
+	// The linked account identifier.
+	LinkedAccountId int `json:"linkedAccountId"`
+	// The data polling interval in seconds.
+	MetricsPollingInterval int `json:"metricsPollingInterval"`
+}
+
+// CloudGcpVpcaccessIntegrationInput - VPC Access
+type CloudGcpVpcaccessIntegrationInput struct {
 	// [DEPRECATED] Multiple polling interval is no longer supported, use only metrics_polling_interval
 	InventoryPollingInterval int `json:"inventoryPollingInterval"`
 	// The linked account identifier.
@@ -1367,6 +1941,10 @@ type CloudLambdaIntegrationInput struct {
 	LinkedAccountId int `json:"linkedAccountId"`
 	// The data polling interval in seconds.
 	MetricsPollingInterval int `json:"metricsPollingInterval"`
+	// Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
+	TagKey string `json:"tagKey"`
+	// Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
+	TagValue string `json:"tagValue"`
 }
 
 // CloudLinkAccountPayload - Autogenerated return type of LinkAccount
@@ -1631,6 +2209,9 @@ type CloudVpcIntegrationInput struct {
 
 // EpochSeconds - The `EpochSeconds` scalar represents the number of seconds since the Unix epoch
 type EpochSeconds string
+
+// SecureValue - The `SecureValue` scalar represents a secure value, ie a password, an API key, etc.
+type SecureValue string
 
 // CloudIntegration - The configuration of a cloud service integration for a linked account.
 type CloudIntegrationInterface interface {

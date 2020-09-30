@@ -73,7 +73,7 @@ var APIAccessUserKeyErrorTypeTypes = struct {
 type APIAccessActorStitchedFields struct {
 	// Fetch a single key by ID and type.
 	Key APIAccessKey `json:"key"`
-	// A list of keys scoped to the current actor and filter arguments.
+	// A list of keys scoped to the current actor and filter arguments. You can read more about managing keys on [this documentation page](https://docs.newrelic.com/docs/apis/nerdgraph/examples/use-nerdgraph-manage-license-keys-personal-api-keys).
 	KeySearch APIAccessKeySearchResult `json:"keySearch"`
 }
 
@@ -100,9 +100,9 @@ type APIAccessCreateInput struct {
 // APIAccessCreateKeyResponse - The response of the create keys mutation.
 type APIAccessCreateKeyResponse struct {
 	// Lists all successfully created keys.
-	CreatedKeys []APIAccessKey `json:"createdKeys"`
+	CreatedKeys []APIAccessKeyInterface `json:"createdKeys"`
 	// Lists all errors for keys that could not be created. Each error maps to a single key input.
-	Errors []APIAccessKeyError `json:"errors"`
+	Errors []APIAccessKeyErrorInterface `json:"errors"`
 }
 
 // APIAccessCreateUserKeyInput - The input for any ingest keys you want to create. Each ingest key must have a type that communicates what kind of data it is for. You can optionally add a name or notes to your key, which can be updated later.
@@ -130,7 +130,7 @@ type APIAccessDeleteKeyResponse struct {
 	// The `id`s of the successfully deleted ingest keys and any errors that occurred when deleting keys.
 	DeletedKeys []APIAccessDeletedKey `json:"deletedKeys"`
 	// Lists all errors for keys that could not be deleted. Each error maps to a single key input.
-	Errors []APIAccessKeyError `json:"errors"`
+	Errors []APIAccessKeyErrorInterface `json:"errors"`
 }
 
 // APIAccessDeletedKey - The deleted key response of the key delete mutation.
@@ -176,7 +176,7 @@ type APIAccessKeySearchQuery struct {
 // APIAccessKeySearchResult - A list of all keys scoped to the current actor.
 type APIAccessKeySearchResult struct {
 	// A list of all keys scoped to the current actor.
-	Keys []APIAccessKey `json:"keys"`
+	Keys []APIAccessKeyInterface `json:"keys"`
 	// The next cursor, used for pagination. If a cursor is present, it means more keys can be fetched.
 	NextCursor string `json:"nextCursor"`
 }
@@ -212,9 +212,9 @@ type APIAccessUpdateInput struct {
 // APIAccessUpdateKeyResponse - The response of the update keys mutation.
 type APIAccessUpdateKeyResponse struct {
 	// Lists all errors for keys that could not be updated. Each error maps to a single key input.
-	Errors []APIAccessKeyError `json:"errors"`
+	Errors []APIAccessKeyErrorInterface `json:"errors"`
 	// Lists all successfully updated keys.
-	UpdatedKeys []APIAccessKey `json:"updatedKeys"`
+	UpdatedKeys []APIAccessKeyInterface `json:"updatedKeys"`
 }
 
 // APIAccessUpdateUserKeyInput - The `id` and data to update one or more keys.
@@ -227,12 +227,12 @@ type APIAccessUpdateUserKeyInput struct {
 	Notes string `json:"notes"`
 }
 
-// APIAccessKeyError - A key error. Each error maps to a single key input.
-type APIAccessKeyErrorInterface interface {
-	ImplementsAPIAccessKeyErrorInterface()
-}
-
 // APIAccessKey - A key for accessing New Relic APIs.
 type APIAccessKeyInterface interface {
-	ImplementsAPIAccessKeyInterface()
+	ImplementsAPIAccessKey()
+}
+
+// APIAccessKeyError - A key error. Each error maps to a single key input.
+type APIAccessKeyErrorInterface interface {
+	ImplementsAPIAccessKeyError()
 }

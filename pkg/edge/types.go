@@ -9,19 +9,11 @@ var EdgeCreateTraceObserverResponseErrorTypeTypes = struct {
 	ALREADY_EXISTS EdgeCreateTraceObserverResponseErrorType
 	// Trace observers aren’t available in provider region.
 	NO_AVAILABILITY_IN_REGION EdgeCreateTraceObserverResponseErrorType
-	// You don’t have permission to make this trace observer call.
-	UNAUTHORIZED_USER EdgeCreateTraceObserverResponseErrorType
-	// We couldn’t process this request.
-	UNEXPECTED_ERROR EdgeCreateTraceObserverResponseErrorType
 }{
 	// A trace observer already exists for this account family and provider region.
 	ALREADY_EXISTS: "ALREADY_EXISTS",
 	// Trace observers aren’t available in provider region.
 	NO_AVAILABILITY_IN_REGION: "NO_AVAILABILITY_IN_REGION",
-	// You don’t have permission to make this trace observer call.
-	UNAUTHORIZED_USER: "UNAUTHORIZED_USER",
-	// We couldn’t process this request.
-	UNEXPECTED_ERROR: "UNEXPECTED_ERROR",
 }
 
 // EdgeDeleteTraceObserverResponseErrorType - Known error codes and messages for `DeleteTraceObserverResponseError`.
@@ -32,19 +24,11 @@ var EdgeDeleteTraceObserverResponseErrorTypeTypes = struct {
 	ALREADY_DELETED EdgeDeleteTraceObserverResponseErrorType
 	// No trace observer was found with the id given.
 	NOT_FOUND EdgeDeleteTraceObserverResponseErrorType
-	// You don’t have permission to make this trace observer call.
-	UNAUTHORIZED_USER EdgeDeleteTraceObserverResponseErrorType
-	// We couldn’t process this request.
-	UNEXPECTED_ERROR EdgeDeleteTraceObserverResponseErrorType
 }{
 	// The trace observer has already been deleted.
 	ALREADY_DELETED: "ALREADY_DELETED",
 	// No trace observer was found with the id given.
 	NOT_FOUND: "NOT_FOUND",
-	// You don’t have permission to make this trace observer call.
-	UNAUTHORIZED_USER: "UNAUTHORIZED_USER",
-	// We couldn’t process this request.
-	UNEXPECTED_ERROR: "UNEXPECTED_ERROR",
 }
 
 // EdgeEndpointStatus - Status of the endpoint.
@@ -77,30 +61,23 @@ var EdgeEndpointTypeTypes = struct {
 type EdgeProviderRegion string
 
 var EdgeProviderRegionTypes = struct {
+	// Provider: `AWS`, Region: `eu-west-1`
+	AWS_EU_WEST_1 EdgeProviderRegion
 	// Provider: `AWS`, Region: `us-east-1`
 	AWS_US_EAST_1 EdgeProviderRegion
 	// Provider: `AWS`, Region: `us-east-2`
 	AWS_US_EAST_2 EdgeProviderRegion
+	// Provider: `AWS`, Region: `us-west-2`
+	AWS_US_WEST_2 EdgeProviderRegion
 }{
+	// Provider: `AWS`, Region: `eu-west-1`
+	AWS_EU_WEST_1: "AWS_EU_WEST_1",
 	// Provider: `AWS`, Region: `us-east-1`
 	AWS_US_EAST_1: "AWS_US_EAST_1",
 	// Provider: `AWS`, Region: `us-east-2`
 	AWS_US_EAST_2: "AWS_US_EAST_2",
-}
-
-// EdgeTraceObserverResponseErrorType - Known error codes and messages for `TraceObserverResponseError`.
-type EdgeTraceObserverResponseErrorType string
-
-var EdgeTraceObserverResponseErrorTypeTypes = struct {
-	// You don’t have permission to make this trace observer call.
-	UNAUTHORIZED_USER EdgeTraceObserverResponseErrorType
-	// We couldn’t process this request.
-	UNEXPECTED_ERROR EdgeTraceObserverResponseErrorType
-}{
-	// You don’t have permission to make this trace observer call.
-	UNAUTHORIZED_USER: "UNAUTHORIZED_USER",
-	// We couldn’t process this request.
-	UNEXPECTED_ERROR: "UNEXPECTED_ERROR",
+	// Provider: `AWS`, Region: `us-west-2`
+	AWS_US_WEST_2: "AWS_US_WEST_2",
 }
 
 // EdgeTraceObserverStatus - Status of the trace observer.
@@ -136,6 +113,8 @@ func (x *EdgeAgentEndpointDetail) ImplementsEdgeEndpointDetail() {}
 
 // EdgeCreateTraceObserverInput - Data required to create a trace observer.
 type EdgeCreateTraceObserverInput struct {
+	// When set to `true` a trace observer will write trace metrics to the current account.
+	Monitoring bool `json:"monitoring"`
 	// Name of the trace observer.
 	Name string `json:"name"`
 	// Provider and region where the trace observer must run. Currently, only AWS regions are supported.
@@ -225,6 +204,8 @@ type EdgeTraceObserver struct {
 	Endpoints []EdgeEndpoint `json:"endpoints"`
 	// Globally unique identifier of this trace observer.
 	ID int `json:"id"`
+	// Which account monitoring metrics are being written to for this trace observer (if specified)
+	MonitoringAccountId int `json:"monitoringAccountId"`
 	// Human-readable name of this trace observer.
 	Name string `json:"name"`
 	// Provider-specific region of this endpoint (for example, `AWS_US_EAST_1`). Currently, only AWS regions are supported.
@@ -233,24 +214,8 @@ type EdgeTraceObserver struct {
 	Status EdgeTraceObserverStatus `json:"status"`
 }
 
-// EdgeTraceObserverResponse - Array of trace observers, or a list of errors for why they couldn't be retrieved.
-type EdgeTraceObserverResponse struct {
-	// All trace observer's response errors, if any.
-	Errors []EdgeTraceObserverResponseError `json:"errors"`
-	// All trace observers found, if any.
-	TraceObservers []EdgeTraceObserver `json:"traceObservers"`
-}
-
-// EdgeTraceObserverResponseError - Description of errors that may occur while attempting to retrieve a trace observer.
-type EdgeTraceObserverResponseError struct {
-	// Error message, with further detail to help resolve the issue.
-	Message string `json:"message"`
-	// Error that may occur while attempting to retrieve a trace observer.
-	Type EdgeTraceObserverResponseErrorType `json:"type"`
-}
-
 // EdgeTracing - This field provides access to Tracing data.
 type EdgeTracing struct {
 	// Lists the existing trace observers for this account family.
-	TraceObservers EdgeTraceObserverResponse `json:"traceObservers"`
+	TraceObservers []EdgeTraceObserver `json:"traceObservers"`
 }
